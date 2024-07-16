@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // if(조건식){
+        //     조건이 true이면 실행
+        // }
+
+        var 숫자;
+        숫자 = 2;
+
+        숫자 % 2 === 0
+        // 짝수 여부를 확인하는 조건식
+
+        // if(숫자 % 2 === 0) {
+        //     console.log(`입력한 숫자는 ${숫자}이고, 짝수입니다.`);
+        // }
+
+        // if(숫자 % 2 !== 0) {
+        //     console.log(`입력한 숫자는 ${숫자}이고, 홀수입니다.`);
+        // }
+
+        if(숫자 % 2 === 0) {
+            console.log(`입력한 숫자는 ${숫자}이고, 짝수입니다.`);
+        }else {
+            console.log(`입력한 숫자는 ${숫자}이고, 홀수입니다.`);
+        }
+
+        var 경력;
+        경력 = 100;
+
+        if(경력>10) {
+            console.log('모셔옵니다!!!');
+        }else if(경력>5){
+            console.log('우선채용');
+        }else if(경력>1){
+            console.log('일반채용');
+        }else {
+            console.log('지원하실 수 없습니다.');
+        }
+
+        // if(경력>1) {
+        //     console.log('일반채용');
+        // }else if(경력>5){
+        //     console.log('우선채용');
+        // }else if(경력>10){
+        //     console.log('모셔옵니다!!');
+        // }else {
+        //     console.log('지원하실 수 없습니다.');
+        // }
+
+        // if문은 큰 값에서 작은 값을 깎아나가는 식으로 작성해야 함
+        // 위 작성에서는 if문의 범위가 else if문의 범위를 다 먹어버림
+        
+        
+    </script>
+</body>
+</html>
