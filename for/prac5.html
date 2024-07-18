@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const line = 35;
+        const harf = (line-1)/2;
+
+        for(let i = 0; i < line; i++){
+            for(let j = 0; j < harf-Math.abs(harf-i); j++){
+                // j = 0; j < 17-(17-0)
+                // j = 1; j < 17-(17-1)
+                // j = 2; j < 17-(17-2)
+                // j = 3; j < 17-(17-3)
+                // j = 4; j < 17-(17-4)
+                // j = 17; j < 17-(17-17)
+                // j = 16; j < 17-(17-16)
+                document.write('○')
+            }
+            for(let j = 0; j < line-(harf-Math.abs(harf-i))*2; j++){
+                // j = 0; j < 35-(17-(17-0)*2)
+                // j = 1; j < 35-(17-(17-1)*2)
+                // j = 2; j < 35-(17-(17-2)*2)
+                // j = 16; j < 35-(17-(17-16)*2)
+                
+                document.write('●')
+            }
+            document.write('<br>')
+        }
+    </script>
+</body>
+</html>
