@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 함수는 매개변수와 리턴을 선택적으로 사용할 수 있다
+        
+
+        function add3AndExportConsole(number){
+            console.log(number+3)
+        }
+
+        add3AndExportConsole(20)
+
+        // 매개변수가 있는 예시
+        // 입력한 값에 3을 더해 콘솔에 출력하는 식
+
+
+        // 함수 선언 시 괄호 안에 들어가는 것이 '매개변수'
+        // 함수를 사용할 때 어떤 값을 외부로부터 받아올 것인지 미리 정해놓는 곳
+        // 설명서와 비슷한 느낌으로 생각해도 무방
+
+       
+        function add3(숫자){
+            return 숫자 + 20
+        }
+
+        console.log(add3(3))
+
+
+        // function 출생년도계산기(현재년도,나이){
+        //     return 현재년도 - 나이 + 1;
+        // }
+
+        function 출생년도계산기(나이){
+            const date = new Date();
+            const 현재년도 = date.getFullYear();
+            return 현재년도 - 나이 + 1;
+        }
+
+        const 강사출생년도 = 출생년도계산기(32);
+        const 요한출생년도 = 출생년도계산기(31);
+        const 철수출생년도 = 출생년도계산기(43);
+        const 갑수출생년도 = 출생년도계산기(72);
+
+        console.log(강사출생년도)
+        console.log(요한출생년도)
+        console.log(철수출생년도)
+        console.log(갑수출생년도)
+
+        
+        function 인사말(이름,나이,국적 = '대한민국'){
+            console.log(`안녕 난 ${국적}에서 온 ${이름}이고, 나이는 ${나이}살이야`)
+        }
+
+        인사말('박요한',31)
+
+        // 옵셔널 패러미터 예시
+        // 옵셔널 패러미터 매개변수는 항상 마지막에 들어가야 함
+    </script>
+</body>
+</html>
