@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        let alpha = ['a','b','c','d','e','f']
+
+        // console.log(alpha[0])
+        // console.log(alpha[1])
+        // console.log(alpha[2])
+        // console.log(alpha[3])
+        // console.log(alpha[4])
+
+        // for(let i = 0; i <= 4; i++){
+        //     console.log(alpha[i])
+        // }
+
+        for(let i = 0; i < alpha.length; i++){
+            console.log(alpha[i])
+        }
+        // 배열을 반복문으로 쓸 때 가장 일반적인 형태
+        // 변수에 length를 쓰면 값을 늘리거나 줄여도 하나의 반복문으로 다 출력할 수 있음
+
+        const arr = [];
+
+        for(let i = 1; i <= 100; i++){
+            arr.push(i);
+        }
+
+        console.log(arr);
+        // arr 배열 안에 1부터 100까지 넣는 식
+
+
+        let count = 0
+
+        for(let i = 0; i < arr.length; i++){
+            if(arr[i] % 2 === 0){
+                count++;
+            }else{}
+        }
+
+        console.log(count)
+        // arr 배열 안에서 짝수만 찾는 식
+        
+
+        const arr2 = [1,4,2,2,4,3,2,4];
+
+        let count2 = 0
+        for(let i = 0; i < arr2.length; i++){
+            if(arr2[i] >= 3){
+                count2++;
+            }
+        }
+
+        console.log(count2);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const 난수 = Math.random();
+        console.log(난수);
+        // 0 이상 1 미만
+
+        for(let i = 0; i < 10; i++){
+            console.log(parseInt(Math.random()*5));
+        }
+        // 0부터 4까지 무작위로 난수를 출력하는 식
+        // parseInt : 소숫점을 내림처리하는 메소드
+
+        for(let i = 0; i < 100; i++){
+            console.log(parseInt(Math.random()*61)+20);
+        }
+
+        
+        let max = 0;
+        let min = 100;
+
+        for(let i = 0; i < 50000; i++){
+            const randomNumber = parseInt(Math.random()*61)+20
+            
+            if(randomNumber > max){
+                max = randomNumber;
+            }
+
+            if(randomNumber < min){
+                min = randomNumber;
+            }
+        }
+
+            console.log(max,min);
+
+            // parseInt(Math.random())+시작점
+    </script>
+</body>
+</html>
