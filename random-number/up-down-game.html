@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const 정답 = parseInt(Math.random()*100)+1;
+        let 범위;
+        let 기회;
+        let level;
+
+        alert('★ Up & Down Game ☆');
+        
+        while(true){
+            level= parseInt(prompt('난이도를 설정해주세요!','1(easy) / 2(normal) / 3(hard) / 4(extreme)'));
+            if(typeof level === 'number' && level >=1 && level <=4 ){
+                break;
+            }
+            alert('장난치지 마세요 :)')
+        }
+        // 유효성 검사
+        
+        if(level === 1){
+            범위 = 60;
+            기회 = 6;
+        }else if(level === 2){
+            범위 = 100;
+            기회 = 5;
+        }else if(level === 3){
+            범위 = 120;
+            기회 = 4;
+        }else{
+            범위 = 500;
+            기회 = 3;
+        }
+
+        for(let i = 0; i < 기회; i++){
+            
+            let 답변;
+            alert(`남은 기회는 ${기회-i}번입니다.`)
+
+            while(true){
+                답변= parseInt(prompt('정답을 입력해주세요!', `1부터 ${범위}사이 중 숫자`));
+                if(typeof 답변 === 'number' && 답변 >=1 && 답변 <= 범위){
+                    break;
+                }
+                alert('장난치지 마세요 :)')
+            }
+            // 유효성 검사
+
+            if(답변 === 정답){
+                alert('이걸 맞추시다니..인정합니다 :)');
+                break;                
+            }else if(i === 기회-1){
+                alert('당신은 실패했어요. 패배자가 되신 걸 축하합니다 :)')
+                alert(`정답은 바로바로 '${정답}'`)
+            }else if(답변 > 정답){
+                alert('down');
+            }else{
+                alert('up');
+            }
+        }
+    </script>
+</body>
+</html>
