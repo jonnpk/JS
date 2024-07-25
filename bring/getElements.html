@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box-class" id="box-id">
+        <p class="my-p-tag">안녕하세요</p>
+        <p class="my-p-tag">봉쥬르</p>
+        <p class="my-p-tag">니하오</p>
+    </div>
+
+    <div class="box-class" id="box-id-2">
+        <p class="my-p-tag">안녕하세요</p>
+        <p class="my-p-tag">봉쥬르</p>
+        <p class="my-p-tag">니하오</p>
+    </div>
+
+    <script>
+        // html 요소를 가져오는 방법
+        // tag / class / id
+        // document.getElementBy~ 형태로 작성
+
+        const idbox = document.getElementById('box-id');
+        const classbox = document.getElementsByClassName('box-class');
+
+        console.log(idbox);
+        console.log(classbox);
+
+        idbox.classList.add('new')
+        classbox[0].classList.add('old')
+
+        const 첫번째박스 = idbox.getElementsByClassName('my-p-tag')
+        console.log('첫번째박스',첫번째박스)
+
+        // id는 정확히 개체를 특정하기 때문에 그냥 이용 가능
+        // class, tag로 가져왔을 때는 collection 형태로 가져오기 때문에
+        // 내부 요소를 활용하려면 반드시 인덱스를 작성해줘야 한다
+
+        const 쿼리셀렉터 = document.querySelector('.box-class > .my-p-tag')
+        console.log(쿼리셀렉터)
+
+        const 쿼리셀렉터올 = document.querySelectorAll('.box-class > .my-p-tag')
+        console.log(쿼리셀렉터올)
+
+        // getElement와 querySelector 중 더 구조적인 방식은 'getElement'
+    </script>
+</body>
+</html>
