@@ -7,12 +7,13 @@
 </head>
 <body>
     <script>
-        const 정답 = parseInt(Math.random()*범위)+1;
         let 범위;
         let 기회;
-        let level;
 
         alert('★ Up & Down Game ☆');
+
+        let level;
+        
         
         while(true){
             level= parseInt(prompt('난이도를 설정해주세요!','1(easy) / 2(normal) / 3(hard) / 4(extreme)'));
@@ -36,6 +37,8 @@
             범위 = 500;
             기회 = 3;
         }
+
+        const 정답 = parseInt(Math.random()*범위)+1;
 
         for(let i = 0; i < 기회; i++){
             
