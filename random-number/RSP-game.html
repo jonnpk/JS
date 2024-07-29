@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script> 
+        alert('가위바위보 한 번 할텐가?');
+
+        function getChoiceString(choice){
+            switch(choice){
+                case 0:
+                    return '가위';
+                case 1:
+                    return '바위';
+                case 2:
+                    return '보';
+                default:
+                    return '잘못된 값';  
+            }
+        }
+
+        let userChoice;
+        let gamewon = false;
+        // 게임 승리 여부를 추적하는 변수
+
+        for(let i = 0; i < 2; i++){
+
+            alert(`기회는 ${2-i}번..`);
+
+            while(true){
+                
+                const computerChoice = Math.floor(Math.random()*3);
+                userChoice = parseInt(prompt('가위(0), 바위(1), 보(2) 중 골라라..'));
+
+                if(isNaN(userChoice) || userChoice < 0 || userChoice > 2){
+                    alert('장난치지마라 닝겐..')
+                    continue;
+                }
+                
+                if(userChoice === computerChoice){
+                    alert(`가위..바위....${getChoiceString(computerChoice)}!! 비겼군..다시 한 번!`);
+                }else if(
+                    (userChoice === 0 && computerChoice === 2) ||
+                    (userChoice === 1 && computerChoice === 0) ||
+                    (userChoice === 2 && computerChoice === 1)){
+                    alert(`가위..바위....${getChoiceString(computerChoice)}!! 당신의 승리..`);
+                    gamewon = true;
+                    // 승리 상태로 설정
+                    break;
+                    // 내부 while 루프 종료
+                }else{
+                    alert(`가위..바위....${getChoiceString(computerChoice)}!! 나의 승리다 닝겐..`);
+                    break;
+                    // 내부 while 루프 종료
+                } 
+            }
+
+            if(gamewon === true){
+                break;
+                // 전체 for 루프 종료
+            }
+        }
+
+        if(gamewon === false){
+            alert('패배자여..게임은 끝났다..')
+        }
+    </script>
+</body>
+</html>
