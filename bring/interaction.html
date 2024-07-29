@@ -29,11 +29,14 @@
 
         
         button[0].addEventListener('click', ()=>{
-            if(box[0].classList.contains('active')){
-                box[0].classList.remove('active');
-            }else{
-                box[0].classList.add('active');
-            }
+            // if(box[0].classList.contains('active')){
+            //     box[0].classList.remove('active');
+            // }else{
+            //     box[0].classList.add('active');
+            // }
+            
+            box[0].classList.toggle('active')
+            // 위의 if문과 똑같이 작동함
         });
 
         // box[0].classList.contains('active')
