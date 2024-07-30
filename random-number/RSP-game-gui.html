@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .container {
+            width: 600px;
+            height: 500px;
+            border: 1px solid #222;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .board {
+            width: 120px;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            background-color: #aaa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .board:active {
+            background-color: #555;
+        }
+
+        .board-container {
+            display: flex;
+            gap: 24px;
+        }
+    </style>
+</head>
+<body>
+    <h1>가위바위보</h1>
+    <div class="container">
+        <h2 class="winning-streak">0연승</h2>
+        <div class="com">
+            <h3>컴퓨터</h3>
+            <div class="board"></div>
+        </div>
+        <div class="user">
+            <h3>유저</h3>
+            <div class="board-container">
+                <div class="board">가위</div>
+                <div class="board">바위</div>
+                <div class="board">보</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const winningstreak = document.querySelector('.winning-streak');
+        const comboard = document.querySelector('.com > .board');
+        const userboard = document.querySelector('.board-container');
+
+        let 연승 = 0;
+        const table = ['가위', '바위', '보']
+        
+        for(let i = 0; i < userboard.childElementCount; i++){
+
+            userboard.children[i].addEventListener('click', ()=>{
+                const comChoice = parseInt(Math.random()*3);
+                const userChoice = i;
+
+                comboard.innerText = table[comChoice]
+                
+                if(comChoice === userChoice){
+                    winningstreak.innerText = '무승부'
+                    winningstreak.style.color = '#222'
+                }else if((userChoice === 0 && comChoice === 2) ||
+                (userChoice === 1 && comChoice === 0) ||
+                (userChoice === 2 && comChoice === 1)){
+                    winningstreak.innerText = '승리'
+                    winningstreak.style.color = 'blue'
+                    연승++;
+                }else{
+                    winningstreak.innerText = '패배 연승초기화!'
+                    winningstreak.style.color = 'red'
+                    연승 = 0;
+                }
+                if(연승 === 3){
+                    winningstreak.innerText = '게임 클리어!'
+                    
+                }else{
+                    // winningstreak.innerText = winningstreak.innerText + `${연승}연승!`
+                    winningstreak.innerText += ` ${연승}연승!`
+                }
+            })
+        }
+    </script>
+</body>
+</html>

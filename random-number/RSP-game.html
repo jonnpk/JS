@@ -41,18 +41,18 @@
                 }
                 
                 if(userChoice === computerChoice){
-                    alert(`가위..바위....${getChoiceString(computerChoice)}!! 비겼군..다시 한 번!`);
+                    alert(`가위..바위....'${getChoiceString(computerChoice)}'!! 비겼군..다시 한 번!`);
                 }else if(
                     (userChoice === 0 && computerChoice === 2) ||
                     (userChoice === 1 && computerChoice === 0) ||
                     (userChoice === 2 && computerChoice === 1)){
-                    alert(`가위..바위....${getChoiceString(computerChoice)}!! 당신의 승리..`);
+                    alert(`가위..바위....'${getChoiceString(computerChoice)}'!! 당신의 승리..`);
                     gamewon = true;
                     // 승리 상태로 설정
                     break;
                     // 내부 while 루프 종료
                 }else{
-                    alert(`가위..바위....${getChoiceString(computerChoice)}!! 나의 승리다 닝겐..`);
+                    alert(`가위..바위....'${getChoiceString(computerChoice)}'!! 나의 승리다 닝겐..`);
                     break;
                     // 내부 while 루프 종료
                 } 
