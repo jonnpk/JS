@@ -13,8 +13,9 @@
         }
         .container {
             width: 600px;
-            height: 500px;
-            border: 1px solid #222;
+            height: 600px;
+            border: 4px solid #777;
+            border-radius: 10%;
             text-align: center;
             display: flex;
             align-items: center;
@@ -29,6 +30,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            font-weight: bold;
         }
         .board:active {
             background-color: #555;
@@ -41,15 +43,16 @@
     </style>
 </head>
 <body>
-    <h1>가위바위보</h1>
+    <h1>☆RSP-GAME☆</h1>
     <div class="container">
-        <h2 class="winning-streak">0연승</h2>
+        <h3><span>Level: </span><span class="now-level"></span></h3>
+        <h2 class="winning-streak">winning streak: 0</h2>
         <div class="com">
-            <h3>컴퓨터</h3>
+            <h3>COMPUTER</h3>
             <div class="board"></div>
         </div>
         <div class="user">
-            <h3>유저</h3>
+            <h3>YOU</h3>
             <div class="board-container">
                 <div class="board">가위</div>
                 <div class="board">바위</div>
@@ -62,9 +65,15 @@
         const winningstreak = document.querySelector('.winning-streak');
         const comboard = document.querySelector('.com > .board');
         const userboard = document.querySelector('.board-container');
+        const nowLevel = document.querySelector('.now-level');
 
-        let 연승 = 0;
-        const table = ['가위', '바위', '보']
+        let streak = 0;
+        let level = 1;
+        
+        const levelDesign = [3,5,7,9];
+        const table = ['가위', '바위', '보'];
+
+        nowLevel.innerText = level;
         
         for(let i = 0; i < userboard.childElementCount; i++){
 
@@ -75,26 +84,30 @@
                 comboard.innerText = table[comChoice]
                 
                 if(comChoice === userChoice){
-                    winningstreak.innerText = '무승부'
+                    winningstreak.innerText = '<Draw>'
                     winningstreak.style.color = '#222'
                 }else if((userChoice === 0 && comChoice === 2) ||
                 (userChoice === 1 && comChoice === 0) ||
                 (userChoice === 2 && comChoice === 1)){
-                    winningstreak.innerText = '승리'
+                    streak++;
+                    winningstreak.innerText = '<Win>'
                     winningstreak.style.color = 'blue'
-                    연승++;
                 }else{
-                    winningstreak.innerText = '패배 연승초기화!'
+                    streak = 0;
+                    winningstreak.innerText = '<Lose> Reset!'
                     winningstreak.style.color = 'red'
-                    연승 = 0;
                 }
-                if(연승 === 3){
-                    winningstreak.innerText = '게임 클리어!'
-                    
+
+                if(streak === levelDesign[level-1]){
+                    streak = 0;
+                    winningstreak.innerText = 'GAME clear!'
+                    level++;
+                    nowLevel.innerText = level;
                 }else{
-                    // winningstreak.innerText = winningstreak.innerText + `${연승}연승!`
-                    winningstreak.innerText += ` ${연승}연승!`
+                    // winningstreak.innerText = winningstreak.innerText + ` winning streak: ${streak}!`
+                    winningstreak.innerText += ` winning streak: ${streak}!`
                 }
+                // level 업그레이드 logic
             })
         }
     </script>
