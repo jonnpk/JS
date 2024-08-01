@@ -87,22 +87,33 @@
         nextBtn.addEventListener('click', ()=>{
             index++;
             // index += viewCount;
+            applyIndexToSlider(true)
 
             if(index > contentWrapper.childElementCount-viewCount){
                 // index = contentWrapper.childElementCount-viewCount;
-                index = 0;
+                
             }
 
             applyIndexToSlider()
             // contentWrapper.style.transform = `translate(${index * -300}px)`
         });
 
-        function applyIndexToSlider(){
+        function applyIndexToSlider(animation){
+            if(true){
+                contentWrapper.style.transition = `0.5s`
+            }else{
+                contentWrapper.style.transition = `none`
+            }
+
             contentWrapper.style.transform = `translateX(${index * -(contentWidth + gap)}px)`
         }
         // 반복되는 기능은 함수로 선언하여 이용할 수 있음
 
+        const cloneFirst = contentWrapper.firstElementChild.cloneNode(true);
+        const cloneLast = contentWrapper.lastElementChild.cloneNode(true);
 
+        contentWrapper.appendChild(cloneFirst);
+        contentWrapper.insertBefore(cloneLast, contentWrapper.firstElementChild);
     </script>
 </body>
 </html>
