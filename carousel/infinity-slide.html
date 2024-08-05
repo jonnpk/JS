@@ -18,7 +18,7 @@
 
         .content-wrapper{
             display: flex;
-            transition: 0.5s;
+            /* transition: 0.5s; */
         }
 
         .content{
@@ -53,54 +53,79 @@
 
 
     <script>
-        const viewCount = 1;
+        const viewCount = 3;
         const gap = 4;
         const slider = document.querySelector('.slider');
         const contentWrapper = document.querySelector('.content-wrapper');
         const slideCount = contentWrapper.childElementCount;
         const nextBtn = document.querySelector('.next');
         const prevBtn = document.querySelector('.prev');
+        const transitionTime = 300;
 
         const contentWidth = (slider.clientWidth - gap * (viewCount -1)) / viewCount;
+        
+        for(let i = 0; i < viewCount; i++){
+            const cloneFirst = contentWrapper.children[i].cloneNode(true);
+            contentWrapper.appendChild(cloneFirst);
+        }
 
-        let index = 0; 
+        for(let i = 0; i < viewCount; i++){
+            const cloneLast = contentWrapper.children[slideCount - 1 - i].cloneNode(true);
+            contentWrapper.insertBefore(cloneLast, contentWrapper.firstElementChild);
+        }
+
+        let index = viewCount;
+        let playAble = true;
+
+        applyIndexToSlider(false);
         
         contentWrapper.style.gap = `${gap}px`
 
-        for(let i = 0; i < slideCount; i++){
+        for(let i = 0; i < contentWrapper.childElementCount; i++){
             contentWrapper.children[i].style.width = `${contentWidth}px`
         }
 
         prevBtn.addEventListener('click', ()=>{
-            index--;
-            // index -= viewCount;
+            if(playAble){
+                playAble = false;
 
-            if(index < 0){
-                // index = 0;
-                index = contentWrapper.childElementCount-viewCount;
+                index--;
+                applyIndexToSlider(true);
+                
+                setTimeout(()=>{
+                    playAble = true;
+
+                    if(index === viewCount -1){
+                        index = contentWrapper.childElementCount-viewCount-1;
+                        applyIndexToSlider(false);
+                    }
+
+                }, transitionTime);
             }
-
-            applyIndexToSlider()
-            // contentWrapper.style.transform = `translate(${index * -300}px)`
         });
 
         nextBtn.addEventListener('click', ()=>{
-            index++;
-            // index += viewCount;
-            applyIndexToSlider(true)
+            if(playAble){
+                playAble = false;
 
-            if(index > contentWrapper.childElementCount-viewCount){
-                // index = contentWrapper.childElementCount-viewCount;
+                index++;
+                applyIndexToSlider(true);
                 
-            }
+                setTimeout(()=>{
+                    playAble = true;
 
-            applyIndexToSlider()
-            // contentWrapper.style.transform = `translate(${index * -300}px)`
+                    if(index === contentWrapper.childElementCount-viewCount){
+                        index = viewCount;
+                        applyIndexToSlider(false);
+                    }
+
+                }, transitionTime);
+            }
         });
 
         function applyIndexToSlider(animation){
-            if(true){
-                contentWrapper.style.transition = `0.5s`
+            if(animation){
+                contentWrapper.style.transition = `${transitionTime}ms`
             }else{
                 contentWrapper.style.transition = `none`
             }
@@ -109,11 +134,9 @@
         }
         // 반복되는 기능은 함수로 선언하여 이용할 수 있음
 
-        const cloneFirst = contentWrapper.firstElementChild.cloneNode(true);
-        const cloneLast = contentWrapper.lastElementChild.cloneNode(true);
+        
 
-        contentWrapper.appendChild(cloneFirst);
-        contentWrapper.insertBefore(cloneLast, contentWrapper.firstElementChild);
+       
     </script>
 </body>
 </html>
