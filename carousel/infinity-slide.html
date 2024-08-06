@@ -29,7 +29,7 @@
         .content{
             /* width: 300px; */
             height: 200px;
-            background-color: pink;
+            background-color: rgb(199, 199, 199);
             flex-shrink: 0;
             display: flex;
             justify-content: center;
@@ -62,7 +62,7 @@
         }
 
         .radio-button.active{
-            background-color: pink;
+            background-color: rgb(199, 199, 199);
         }
 
         .prev{
@@ -101,7 +101,7 @@
     </div>
 
     <script>
-        const viewCount = 3;
+        const viewCount = 2;
         const gap = 4;
         const slider = document.querySelector('.slider');
         const contentWrapper = document.querySelector('.content-wrapper');
@@ -120,6 +120,11 @@
             const button = document.createElement('div');
             button.classList.add('radio-button');
             radioButtonContainer.appendChild(button);
+
+            button.addEventListener('click', ()=>{
+                index = viewCount + i;
+                applyIndexToSlider(true);
+            });
         };
 
         radioButtonContainer.children[0].classList.add('active');
@@ -191,12 +196,25 @@
             };
 
             contentWrapper.style.transform = `translateX(${index * -(contentWidth + gap)}px)`;
+
+            resetButton();
+
+            if(viewCount-1 === index){
+                radioButtonContainer.lastElementChild.classList.add('active');
+            }else if(slideCount + viewCount === index){
+                radioButtonContainer.firstElementChild.classList.add('active');
+            }else{
+                radioButtonContainer.children[index-viewCount].classList.add('active');
+            };
         };
-        // 반복되는 기능은 함수로 선언하여 이용할 수 있음
 
         function resetButton(){
-            
-        }
+            for(let i = 0; i < radioButtonContainer.childElementCount; i++){
+                radioButtonContainer.children[i].classList.remove('active');
+            }
+        };
+
+        // 반복되는 기능은 함수로 선언하여 이용할 수 있음
     </script>
 </body>
 </html>
