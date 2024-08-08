@@ -1,4 +1,5 @@
 function createSlider(target, viewCount, gap, transitionTime, autoPlay){
+                    // 매개변수
     target.classList.add('j-slider-container');
     // const viewCount = 2;
     // const gap = 4;
@@ -69,19 +70,21 @@ function createSlider(target, viewCount, gap, transitionTime, autoPlay){
         contentWrapper.insertBefore(cloneLast[i], contentWrapper.firstElementChild);
     };
 
-    const contentWidth = (slider.clientWidth - gap * (viewCount -1)) / viewCount;
     
-    contentWrapper.style.gap = `${gap}px`
-
     let index = viewCount;
     let playAble = true;
     let autoPlayInterval;
+    let contentWidth
+
+
+    contentWrapper.style.gap = `${gap}px`
+
+    calcSlideWidth();
+    // resize 되기 전 컨텐츠 크기 정의
 
     applyIndexToSlider(false);
-
-    for(let i = 0; i < contentWrapper.childElementCount; i++){
-        contentWrapper.children[i].style.width = `${contentWidth}px`
-    };
+    
+    window.addEventListener('resize', calcSlideWidth);
 
     nextBtn.addEventListener('click', next);
 
@@ -103,6 +106,19 @@ function createSlider(target, viewCount, gap, transitionTime, autoPlay){
             }, transitionTime);
         };
     });
+
+
+    function calcSlideWidth(){
+        contentWidth = (slider.clientWidth - gap * (viewCount -1)) / viewCount;
+        
+        for(let i = 0; i < contentWrapper.childElementCount; i++){
+            contentWrapper.children[i].style.width = `${contentWidth}px`
+        };
+        
+        applyIndexToSlider(false);
+    }
+    // 반응형을 위한 함수
+
 
     function next(){
         if(playAble){
