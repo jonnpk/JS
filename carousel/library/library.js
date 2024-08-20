@@ -163,7 +163,7 @@ function createSlider(target, viewCount, gap, transitionTime, autoPlay){
 
             autoPlayInterval = setInterval(()=>{
                 next(); 
-            }, 5000);
+            }, 3000);
         }
     };
 
